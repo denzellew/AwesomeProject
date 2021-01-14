@@ -1,15 +1,21 @@
+import { Button, WingBlank } from '@ant-design/react-native';
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
 import Colors from '../constants/Colors';
+import useFingerprints from '../hooks/useFingerprints';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
 export default function EditScreenInfo({ path }: { path: string }) {
+  const fingerprintService = useFingerprints();
   return (
     <View>
       <View style={styles.getStartedContainer}>
+        <WingBlank>
+          <Button onPress={() => fingerprintService.scanFingerPrint()}>Test Button</Button>
+        </WingBlank>
         <Text
           style={styles.getStartedText}
           lightColor="rgba(0,0,0,0.8)"
